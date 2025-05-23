@@ -2148,8 +2148,9 @@ async def serve() -> None:
 
     app_logger.info("Creating initialization options")
     options = server.create_initialization_options()
+    app_logger.info(f"Initialization options: {options}")
 
-    app_logger.info("Starting stdio server")
+    app_logger.info("Starting stdio server with verbose logging")
     async with stdio_server() as (read_stream, write_stream):
         app_logger.info("Running MCP server")
         await server.run(read_stream, write_stream, options, raise_exceptions=True)
